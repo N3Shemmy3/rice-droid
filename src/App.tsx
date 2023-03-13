@@ -65,7 +65,7 @@ export default function App() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img
-           
+
             style={{
               height: 24,
               width: 24,
@@ -186,7 +186,7 @@ export default function App() {
                     <Typography
                       variant='h4'
                       sx={{
-                        fontWeight: 700,
+                        fontWeight: 800,
                         color: 'inherit',
                         letterSpacing: '.1rem',
                         textDecoration: 'none',
@@ -197,7 +197,7 @@ export default function App() {
                     <Typography
                       variant='body2'
                       sx={{
-                        fontWeight: 400,
+                        fontWeight: 450,
                         color: theme.palette.text.secondary,
                         display: "inline",
                         textDecoration: 'none',
@@ -246,7 +246,7 @@ export default function App() {
                       width: "auto",
                       height: "auto",
                       maxHeight: "80%",
-                      transform: "translate(150px, 50px)",
+                      transform: "translate(120px, 50px)",
                       maxWidth: "100%",
                     }} />
 
