@@ -65,8 +65,7 @@ export default function App() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img
-            component="logo"
-            href="/"
+           
             style={{
               height: 24,
               width: 24,
