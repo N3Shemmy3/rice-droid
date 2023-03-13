@@ -64,11 +64,14 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img style={{
-            height: 24,
-            width: 24,
-            marginRight: "10px",
-          }}
+          <img
+            component="a"
+            href="/"
+            style={{
+              height: 24,
+              width: 24,
+              marginRight: "10px",
+            }}
             src="/rice-droid/logo.png" />
           <Typography
             variant="h5"
