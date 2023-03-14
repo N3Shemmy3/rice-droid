@@ -5,7 +5,7 @@ import { CssBaseline } from '@mui/material';
 import theme from './themes/theme';
 import App from './App';
 import Home from './routes/Home';
-
+import Download from './routes/Download';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "download",
+        element: <Download />,
       },
     ],
   },

@@ -1,7 +1,7 @@
 import './App.css'
 
 import * as React from 'react';
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,26 +18,27 @@ const pages = [
   {
     id: 0,
     name: 'Home',
-    url: '/'
+    url: ''
   },
   {
     id: 1,
     name: 'About',
-    url: '/about'
+    url: 'about'
   },
   {
     id: 2,
     name: 'Team',
-    url: '/team'
+    url: 'team'
   },
   {
     id: 3,
     name: 'Download',
-    url: '/dowload'
+    url: 'download'
   }];
 
 export default function App() {
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
+  let navigate = useNavigate();
 
 
   const toggleDrawer =
@@ -52,6 +53,11 @@ export default function App() {
         }
 
         setDrawerOpen(open);
+      };
+  const navigateTo =
+    (path: string) =>
+      (event: React.KeyboardEvent | React.MouseEvent) => {
+        navigate(path);
       };
   return (
     <React.Fragment >
@@ -84,11 +90,10 @@ export default function App() {
               <Button
                 size="large"
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={navigateTo(page.url)}
               >
                 <Typography
                   variant="subtitle1"
-                  component="a"
-                  href={page.url}
                   sx={{
                     fontWeight: 700,
                     color: 'inherit',
@@ -197,7 +202,7 @@ export default function App() {
                     fontSize: "20px",
                     fontWeight: "700",
                   }}
-                  href={page.url}>
+                  onClick={navigateTo(page.url)}>
                   {page.name}
                 </a>
               ))}
@@ -208,7 +213,7 @@ export default function App() {
                   fontSize: "20px",
                   fontWeight: "700",
                 }}
-                href='/'>
+                onClick={navigateTo("/constactus")}>
                 Contact us
               </a>
             </div>
