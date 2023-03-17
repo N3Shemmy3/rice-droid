@@ -3,19 +3,17 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Button, Typography } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-
 import theme from '../themes/theme';
 
 
 
-import banner37 from '/Group37mainBanner-bg.png';
-import banner37Mobile from '/Group37mainBanner-bg-mobile.png';
-import Group22 from '/Group22.png';
-import Twitter from '/twitter.svg';
-import Git from '/git.svg';
-import Chat from '/vector.svg';
-import Updates from '/updates.svg';
+import banner37 from '/src/assets/images/Group37mainBanner-bg.png';
+import banner37Mobile from '/src/assets/images/Group37mainBanner-bg-mobile.png';
+import Group22 from '/src/assets/images/Group22.png';
+import Twitter from '/src/assets/images/twitter.svg';
+import Git from '/src/assets/images/git.svg';
+import Chat from '/src/assets/images/vector.svg';
+import Updates from '/src/assets/images/updates.svg';
 
 
 
@@ -85,25 +83,20 @@ export default function Home() {
                                             },
                                         }}
                                     >
-                                        <IconButton sx={{ p: 1, }}>
-                                            <img src={Updates} />
-                                        </IconButton>
-                                        <IconButton sx={{ p: 1, }}>
-                                            <img src={Chat} />
-                                        </IconButton>
-                                        <IconButton sx={{ p: 1, }}>
-                                            <img src={Git} />
-                                        </IconButton>
-                                        <IconButton sx={{ p: 1, }}>
-                                            <img src={Twitter} />
-                                        </IconButton>
+
+                                        <img src={Updates} />
+                                        <img src={Chat} />
+                                        <img src={Git} />
+                                        <img src={Twitter} />
+
                                     </Box>
                                     <Button
                                         color='secondary'
                                         variant="contained"
                                         size='large'
                                         sx={{ borderRadius: 50, px: 6, }}
-                                    >Learn more</Button>
+                                    >Learn more
+                                    </Button>
                                 </Box>
 
                                 <Box
