@@ -15,72 +15,72 @@ import theme from '../themes/theme'
 
 import banner from '/src/assets/images/banner.jpg'
 import SearchIcon from '@mui/icons-material/Search';
-import AppBar from "@mui/material/AppBar";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 const devices = [
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     }, {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
     {
         codeName: "chime",
         name: 'RedMi 9 Power',
         lastUpdate: '14/4/2023',
-        img: ''
+        img: 'https://raw.githubusercontent.com/PixelExperience/official_devices/master/images/chime.png'
     },
 ];
 
 
-export default function Download() {
+export default function Devices() {
 
     return (
         <Container sx={{
@@ -111,8 +111,6 @@ export default function Download() {
                 for your <span style={{ color: theme.palette.primary.main, }}>device</span> now!
             </Typography>
             <Box sx={{
-                position: "sticky",
-                top: 0,
                 pt: "16px",
                 pb: "24px",
                 zIndex: "1100",
@@ -129,7 +127,7 @@ export default function Download() {
                 >
                     <InputBase
                         sx={{ ml: 1, flex: 1, borderRadius: 8, color: "inherit" }}
-                        placeholder="Search by Device or codeName"
+                        placeholder="Search Device"
 
                     />
                     <IconButton type="button" color="inherit" sx={{ p: '10px' }} aria-label="search">
@@ -155,62 +153,46 @@ export default function Download() {
                 <Grid
                     container
                     spacing={{ xs: 2, md: 3 }}
-                    columns={{ xs: 1, sm: 6, md: 10 }}
+                    columns={{ xs: 1, sm: 2, md: 4 }}
                 >
-                    {devices.map((device, n) => (
-                        <Grid key={n} item xs={2}>
-                            <Paper
+                    {devices.map((device) => (
+                        <Grid key={device.name} item xs={2}>
+                            <Card
                                 sx={{
                                     mb: "16px",
+                                    height: "140px",
                                     maxWidth: "100%",
-                                    width: window.innerWidth > 600 ? 250 : "100%",
+                                    borderRadius: 4,
+                                    display: "flex",
+
                                 }}
                             >
-                                <CardMedia
-                                    sx={{
-                                        height: 140,
-                                        maxHeight: "100%"
+                                <div
+                                    style={{
+                                        my: "auto",
+                                        height: "100%S",
+                                        alignItems: "center"
                                     }}
-                                    image={banner}
-                                    title={device.name}
-                                />
+                                >
+                                    <LazyLoadImage
+                                        height="100px"
+                                        effect="blur"
+                                        src={device.img} />
+
+                                </div>
+
                                 <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {device.name}
+                                    <Typography gutterBottom variant="h6" component="div">
+                                        {device.name} ({device.codeName})
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {device.codeName}
+
+                                    <Typography variant="body1" color="text.secondary">
+                                        {device.lastUpdate}
                                     </Typography>
                                 </CardContent>
 
-                                <CardActions
-                                    sx={{
-                                        z: 1,
-                                    }}>
 
-                                    <Button
-                                        variant="contained"
-                                        size="small"
-                                        sx={{
-                                            borderRadius: 50,
-                                            textTransform: "none",
-                                        }}
-                                    >
-                                        Download
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        size="small"
-                                        sx={{
-                                            borderRadius: 50,
-                                            textTransform: "none",
-                                        }}
-                                    >
-                                        Info
-                                    </Button>
-
-                                </CardActions>
-                            </Paper>
+                            </Card>
                         </Grid>
                     ))
                     }

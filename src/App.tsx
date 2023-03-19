@@ -30,11 +30,13 @@ const pages = [
     name: 'Team',
     url: 'team'
   },
+  
   {
     id: 3,
     name: 'Download',
     url: 'download'
-  }];
+  }
+];
 
 export default function App() {
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
