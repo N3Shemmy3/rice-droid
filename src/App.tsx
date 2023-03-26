@@ -30,11 +30,11 @@ const pages = [
     name: 'Team',
     url: 'team'
   },
-  
+
   {
     id: 3,
     name: 'Download',
-    url: 'download'
+    url: 'devices'
   }
 ];
 
@@ -62,7 +62,7 @@ export default function App() {
         navigate(path);
       };
   return (
-    <React.Fragment >
+    <div>
       <CssBaseline />
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -158,7 +158,7 @@ export default function App() {
         PaperProps={{
           sx: {
             backgroundColor: "transparent",
-            backdropFilter: "blur(20px)",
+            backdropFilter: "blur(18px)",
           }
         }}
 
@@ -222,6 +222,6 @@ export default function App() {
           </div>
         </Box >
       </Drawer >
-    </React.Fragment >
+    </div>
   );
 }
