@@ -1,11 +1,7 @@
-
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Button, Typography } from '@mui/material';
 import theme from '../themes/theme';
-
-
 
 import banner37 from '/src/assets/images/Group37mainBanner-bg.png';
 import banner37Mobile from '/src/assets/images/Group37mainBanner-bg-mobile.png';
@@ -18,6 +14,8 @@ import Updates from '/src/assets/images/updates.svg';
 
 
 export default function Home() {
+
+
     return (
         <Container disableGutters>
             <Box sx={{ my: 2 }}>
@@ -65,7 +63,7 @@ export default function Home() {
                                         Ready for a <span style={{ color: theme.palette.primary.main, }}>Riced</span> Experience?
                                     </Typography>
                                     <Typography
-                                        variant='body2'
+                                        variant='h6'
                                         sx={{
                                             fontWeight: 450,
                                             color: theme.palette.text.secondary,
@@ -83,7 +81,6 @@ export default function Home() {
                                             },
                                         }}
                                     >
-
                                         <img src={Updates} />
                                         <img src={Chat} />
                                         <img src={Git} />
@@ -121,7 +118,7 @@ export default function Home() {
                     </div>
 
                 </Container>
-            </Box>
+            </Box >
         </Container >
     )
 }

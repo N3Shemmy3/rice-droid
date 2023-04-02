@@ -1,0 +1,142 @@
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
+import Chip from '@mui/material/Chip';
+import Grid from '@mui/material/Unstable_Grid2';
+import IconButton from '@mui/material/IconButton';
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import theme from '../themes/theme'
+
+import banner from '/src/assets/images/banner.jpg';
+import Avatar from "@mui/material/Avatar";
+
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Twitter from '/src/assets/images/twitter.svg';
+import Git from '/src/assets/images/git.svg';
+import Chat from '/src/assets/images/vector.svg';
+import Updates from '/src/assets/images/updates.svg';
+
+
+const maintainers =
+{
+    "name": "N3Shemmy3",
+    "role": "Web Developer",
+    "telegram": "https://t.me/N3Shemmy3",
+    "github": "https://github.com/N3Shemmy3",
+    "linkedIn": "",
+};
+
+
+export default function About() {
+
+    const isTablet = () => (window.innerWidth > 600);
+
+    return (
+        <div>
+            <Box>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        mt: "80px",
+                        mb: "24px",
+                        fontWeight: 600,
+                    }}
+                >
+                    About US</Typography>
+                <Typography
+                    variant={isTablet() ? "h6" : "subtitle1"}
+                    gutterBottom
+                >
+                    Ricedroid is a fast and stable Android operating system based on LineageOS and crDroid. <br />
+                    It aims to provide customizations inspired by Oxygen OS and nothingOS while staying close to AOSP, and is available as a free and open-source software.
+
+                </Typography>
+
+                <Typography
+                    variant="h4"
+                    sx={{
+                        mt: "80px",
+                        mb: "24px",
+                        fontWeight: 600,
+                    }}
+                >
+                    Device Maintainers:</Typography>
+                <Grid
+                    container
+                    sx={{
+                        mt: "16px",
+                    }}
+                    spacing={{ xs: 2, md: 2 }}
+                    columns={{ xs: 1, sm: 4, md: 8 }}
+                >
+                    {[...Array(10)].map((e, index) => (
+                        <Grid key={index} xs={2}>
+                            <Card
+
+                                sx={{
+                                    mb: "16px",
+                                    width: "100%",
+                                    maxWidth: isTablet() ? 600 : "550px",
+                                    selectable: "none",
+                                    borderRadius: "10px",
+                                }}
+                            >
+
+                                <CardMedia
+                                    sx={{ height: "140px", }}
+                                    image='https://avatars.githubusercontent.com/u/67279072?v=4'
+                                    title="mock"
+
+                                />
+                                <CardContent
+                                    sx={{
+                                        px: "auto"
+                                    }}>
+
+                                    <Typography
+                                        variant="h5"
+                                        gutterBottom
+                                        component="div"
+                                        sx={{
+                                            fontWeight: 700,
+                                        }}>
+                                        {maintainers.name}
+                                    </Typography>
+                                    <Typography
+                                        variant="h6"
+                                        color="text.secondary">
+                                        {maintainers.role}
+                                    </Typography>
+
+                                </CardContent>
+                                <CardActions sx={{
+                                    '& > :not(style)': {
+                                        mx: "auto",
+                                    },
+                                }}>
+                                    <IconButton color="primary" >
+                                        <img src={Git} alt="github" />
+                                    </IconButton>
+                                    <IconButton color="primary" >
+                                        <img src={Twitter} alt="github" />
+                                    </IconButton>
+                                    <IconButton color="primary" >
+                                        <img src={Updates} alt="github" />
+                                    </IconButton>
+                                </CardActions>
+
+                            </Card>
+                        </Grid>
+                    ))
+                    }
+                </Grid>
+            </Box>
+
+        </div >
+    )
+}

@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
 import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -18,10 +18,11 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import theme from '../themes/theme'
 
-import banner from '/src/assets/images/banner.jpg'
+import banner from '/src/assets/images/banner.jpg';
+import group7 from '/src/assets/images/Group7.png';
 import SearchIcon from '@mui/icons-material/Search';
-
-type Device = {
+import { Data } from './Data';
+export type Device = {
     "maintainer": "Name (nickname)",
     "oem": "OEM",
     "device": "Device Name",
@@ -50,23 +51,48 @@ export default function Devices() {
     const url = `https://raw.githubusercontent.com/N3Shemmy3/android_vendor_RiceDroidOTA/patch-1/ricedroid.devices`;
     const isTablet = () => (window.innerWidth > 600)
     const result: Array<Device> = [];
-    const [devices, setDevices] = useState(result);
+    const [devices, setDevices] = useState(Data);
+    const [devicess, setDevicess] = useState(Data);
 
+    const [text, setText] = useState('');
 
-    function splitTextIntoLines(text: string) {
-        // Split the text by line breaks
+    const splitTextIntoLines = (text: string) => {
         const lines = text.split(/\r?\n/);
         return lines;
     }
-    function getDeviceUrl(name: string) {
+    const getDeviceUrl = (name: string) => {
         return "https://raw.githubusercontent.com/ricedroidOSS-devices/android_vendor_RiceDroidOTA/thirteen/" + name + ".json";
     }
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (event.key === 'Enter') {
+            searchDevices(Data, text);
+        }
+        setText("");
+        return false;
+    }
+    const searchDevices = (arr, searchInput: string) => {
+        const filteredData = arr.filter(value => {
+            const searchStr = searchInput.toLowerCase();
+            const nameMatches = value.device.toLowerCase().includes(searchStr);
+            const daysMatches = value.filename.toString().includes(searchStr);
+
+            return nameMatches || daysMatches;
+        });
+        console.log(filteredData);
+        setDevices(filteredData)
+    }
     useEffect(() => {
+        /*
         axios.get(url).then((response) => {
             const value = splitTextIntoLines(response.data);
             var list = new Array();
             for (var i = 0; i < (value.length - 1); i++) {
                 var object: Device = null;
+ 
                 axios
                     .get(getDeviceUrl(value[i]))
                     .then((response) => {
@@ -79,16 +105,19 @@ export default function Devices() {
                     });
             }
             console.log(list);
-            if (devices.length < 1) setDevices(list);
+            setDevices(list);
             console.log('i fire once');
         });
+        */
     }, []);
 
+
     return (
-        <Container sx={{
-            height: "100%",
-            width: "100%"
-        }}>
+        <Container
+            sx={{
+                height: "100%",
+                width: "100%",
+            }}>
             <div style={{ height: "100px" }} />
             <Typography
                 variant='h4'
@@ -116,7 +145,7 @@ export default function Devices() {
                 pt: "16px",
                 pb: "24px",
                 zIndex: "1100",
-                backgroundColor: theme.palette.background.default,
+
             }}>
                 <Paper
                     component="form"
@@ -128,11 +157,21 @@ export default function Devices() {
                     }}
                 >
                     <InputBase
-                        sx={{ ml: 1, flex: 1, borderRadius: 8, color: "inherit" }}
+                        id="my-input"
+                        sx={{
+                            ml: 1,
+                            flex: 1,
+                            borderRadius: 8,
+                            color: "inherit"
+                        }}
                         placeholder="Search Device"
-
                     />
-                    <IconButton type="button" color="inherit" sx={{ p: '10px' }} aria-label="search">
+                    <IconButton
+                        color="inherit"
+                        sx={{ p: '10px' }}
+                        aria-label="search"
+                        onMouseDown={handleMouseDownPassword}
+                    >
                         <SearchIcon />
                     </IconButton>
                 </Paper>
@@ -149,13 +188,15 @@ export default function Devices() {
                     spacing={{ xs: 2, md: 2 }}
                     columns={{ xs: 1, sm: 4, md: 8 }}
                 >
-                    {devices.map((device) => (
-                        <Grid key={device.filename} item xs={2}>
+                    {devices.map((device, index) => (
+                        <Grid key={index} xs={2}>
                             <Card
+
                                 sx={{
                                     mb: "16px",
                                     width: "100%",
-                                    maxWidth: window.innerWidth,
+                                    maxWidth: isTablet() ? 600 : "600px",
+                                    selectable: "none",
                                     borderRadius: "8px",
                                 }}
                             >
@@ -185,7 +226,7 @@ export default function Devices() {
 
                                     </Stack>
                                     <Typography
-                                        variant={isTablet() ? "h5" : "h6"}
+                                        variant="h6"
                                         component="div">
                                         {device.device}
                                     </Typography>
@@ -206,11 +247,13 @@ export default function Devices() {
                                             textTransform: "none",
                                         }}>Download</Button>
 
+
                                     <Button
                                         size="small"
                                         variant="contained"
                                         href={device.forum}
                                         sx={{
+                                            display: device.forum ? "flex" : "none",
                                             borderRadius: "16px",
                                             textTransform: "none",
                                         }}>Forum</Button>

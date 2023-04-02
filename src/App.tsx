@@ -1,7 +1,7 @@
 import './App.css'
 
 import * as React from 'react';
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,35 +13,33 @@ import CloseIcon from '@mui/icons-material/CloseOutlined';
 import IconButton from '@mui/material/IconButton';
 import { Button, Typography } from '@mui/material';
 
-
 const pages = [
   {
-    id: 0,
     name: 'Home',
     url: ''
   },
+
   {
-    id: 1,
+    name: 'Download',
+    url: 'devices'
+  },
+  {
+    name: 'Gallery',
+    url: 'gallery'
+  },
+  {
     name: 'About',
     url: 'about'
   },
-  {
-    id: 2,
-    name: 'Team',
-    url: 'team'
-  },
-
-  {
-    id: 3,
-    name: 'Download',
-    url: 'devices'
-  }
 ];
 
 export default function App() {
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
-  let navigate = useNavigate();
+  const [isHeaderShown, setHeaderShown] = React.useState(false);
+  const isTablet = () => (window.innerWidth > 600);
+  const location = useLocation()
 
+  let navigate = useNavigate();
 
   const toggleDrawer =
     (open: boolean) =>
@@ -59,15 +57,18 @@ export default function App() {
   const navigateTo =
     (path: string) =>
       (event: React.KeyboardEvent | React.MouseEvent) => {
+        setHeaderShown(location.pathname == "Home" ? true : false);
         navigate(path);
       };
   return (
-    <div>
-      <CssBaseline />
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <div style={{
+      margin: "0 auto",
+    }}>
+      <Container >
+        <Toolbar
+          disableGutters
+        >
           <img
-
             style={{
               height: 24,
               width: 24,
@@ -75,7 +76,7 @@ export default function App() {
             }}
             src="/rice-droid/logo.png" />
           <Typography
-            variant="h5"
+            variant={isTablet() ? "h5" : "h6"}
             component="a"
             href="/"
             sx={{
@@ -88,18 +89,24 @@ export default function App() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
                 size="large"
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                key={index}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                }}
                 onClick={navigateTo(page.url)}
               >
                 <Typography
                   variant="subtitle1"
                   sx={{
-                    fontWeight: 700,
+                    fontWeight: 800,
                     color: 'inherit',
                     letterSpacing: '.1rem',
+                    textTransform: "none",
                     textDecoration: 'none',
                   }}>
                   {page.name}
@@ -134,31 +141,26 @@ export default function App() {
             <Typography
               variant="subtitle1"
               color="white"
-              component="a"
-              href='/'
               sx={{
                 fontWeight: 400,
                 color: 'inherit',
                 letterSpacing: '.1rem',
                 textDecoration: 'none',
                 textTransform: "none",
-
               }}>
               Contact us
             </Typography>
           </Button>
         </Toolbar>
-      </Container>
 
-      <div id="main">
         <Outlet />
-      </div>
+      </Container>
 
       <Drawer
         PaperProps={{
           sx: {
-            backgroundColor: "transparent",
-            backdropFilter: "blur(18px)",
+            backgroundColor: "#00000091",
+            backdropFilter: "blur(20px)",
           }
         }}
 
@@ -196,8 +198,9 @@ export default function App() {
                 flexDirection: "column",
                 marginLeft: "16px",
               }}>
-              {pages.map((page) => (
+              {pages.map((page, index) => (
                 <a
+                  key={index}
                   style={{
                     color: "InfoBackground",
                     textDecorationLine: "none",
