@@ -13,7 +13,6 @@ import Devices from './routes/Devices';
 import Device from './routes/Device';
 import About from './routes/About';
 import Gallery from './routes/Gallery';
-
 import group7 from "/src/assets/images/Group7.png";
 import group7_1 from "/src/assets/images/Group7-1.png";
 
@@ -58,7 +57,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
       }}>
         <Box height="fit" sx={{ display: { xs: 'none', md: 'flex' }, }}>
-          <img src={group7} height="fit"
+          <img src="/rice-droid//src/assets/images/Group7.png" height="fit"
             style={{
               width: "100vw",
               height: "auto",
@@ -70,7 +69,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           />
         </Box>
         <Box height="fit" sx={{ display: { xs: 'flex', md: 'none' }, }}>
-          <img src={group7_1} height="fit"
+          <img src="/rice-droid//src/assets/images/Group7-1.png" height="fit"
             style={{
               width: "auto",
               height: "auto",
