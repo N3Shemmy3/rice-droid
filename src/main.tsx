@@ -1,7 +1,6 @@
-import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { ThemeProvider } from '@emotion/react';
-import { CssBaseline, Container, Box } from '@mui/material';
+import { CssBaseline, Box } from '@mui/material';
 import theme from './themes/theme';
 import {
   createBrowserRouter,
