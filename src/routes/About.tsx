@@ -68,10 +68,10 @@ export default function About() {
                         mt: "16px",
                     }}
                     spacing={{ xs: 2, md: 3 }}
-                    columns={{ xs: 1, sm: 6, md: 10 }}
+                    columns={{ xs: 1, sm: 6, md: 9 }}
                 >
                     {[...Array(10)].map((e, index) => (
-                        <Grid key={index} xs={2}>
+                        <Grid sx={{ mx: "auto", }} key={index} xs={2}>
 
                             <Card
                                 sx={{
@@ -149,24 +149,24 @@ export default function About() {
 
                                             <IconButton
                                                 color="secondary"
+                                                aria-label="Telegram"
+                                                sx={{ ml: "8px" }}
+                                            >
+                                                <TelegramIcon />
+                                            </IconButton>
+                                            <IconButton
+                                                color="secondary"
                                                 aria-label="Github"
                                                 sx={{ ml: "8px" }}
                                             >
                                                 <GitHubIcon />
                                             </IconButton>
 
-                                            <IconButton
-                                                color="secondary"
-                                                aria-label="Telegram"
-                                                sx={{ ml: "8px" }}
-                                            >
-                                                <TelegramIcon />
-                                            </IconButton>
 
                                             <IconButton
                                                 color="secondary"
                                                 aria-label="Linked-In"
-                                                sx={{ ml: "8px" }}
+                                                sx={{ ml: "8px", display: "none", }}
                                             >
                                                 <LinkedInIcon />
                                             </IconButton>

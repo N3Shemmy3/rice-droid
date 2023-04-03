@@ -15,8 +15,8 @@ import Device from './routes/Device';
 import About from './routes/About';
 import Gallery from './routes/Gallery';
 
-import group7 from "/src/assets/images/Group7.png"
-import group7_1 from "/src/assets/images/Group7-1.png"
+import group7 from "/src/assets/images/Group7.png";
+import group7_1 from "/src/assets/images/Group7-1.png";
 
 
 const router = createBrowserRouter([

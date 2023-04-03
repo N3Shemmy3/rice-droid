@@ -242,6 +242,7 @@ export default function Devices() {
                                         size="small"
                                         variant="contained"
                                         href={device.download}
+                                        rel="external"
                                         sx={{
                                             borderRadius: "16px",
                                             textTransform: "none",
@@ -252,6 +253,7 @@ export default function Devices() {
                                         size="small"
                                         variant="contained"
                                         href={device.forum}
+                                        rel="external"
                                         sx={{
                                             display: device.forum ? "flex" : "none",
                                             borderRadius: "16px",

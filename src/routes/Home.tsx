@@ -1,20 +1,35 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Button, Typography } from '@mui/material';
+
+import IconButton from '@mui/material/IconButton';
 import theme from '../themes/theme';
 
 import banner37 from '/src/assets/images/Group37mainBanner-bg.png';
 import banner37Mobile from '/src/assets/images/Group37mainBanner-bg-mobile.png';
 import Group22 from '/src/assets/images/Group22.png';
-import Twitter from '/src/assets/images/twitter.svg';
-import Git from '/src/assets/images/git.svg';
-import Chat from '/src/assets/images/vector.svg';
-import Updates from '/src/assets/images/updates.svg';
 
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
+import { useNavigate } from 'react-router-dom';
+
+const socials = {
+    "telegram": "https://t.me/riceDroidNews",
+    "twitter": "https://twitter.com/riceDroid/",
+    "github": "https://github.com/ricedroidOSS-devices",
+}
 
 export default function Home() {
+    let navigate = useNavigate();
 
+
+    const navigateTo =
+        (path: string) =>
+            (event: React.KeyboardEvent | React.MouseEvent) => {
+                navigate(path);
+            };
 
     return (
         <Container disableGutters>
@@ -81,10 +96,35 @@ export default function Home() {
                                             },
                                         }}
                                     >
-                                        <img src={Updates} />
-                                        <img src={Chat} />
-                                        <img src={Git} />
-                                        <img src={Twitter} />
+                                        <IconButton
+                                            color="secondary"
+                                            aria-label="Telegram"
+                                            href={socials.telegram}
+                                            rel="external"
+                                            sx={{ ml: "8px" }}
+                                        >
+                                            <TelegramIcon />
+                                        </IconButton>
+                                        <IconButton
+                                            color="secondary"
+                                            aria-label="Github"
+                                            href={socials.github}
+                                            rel="external"
+                                            sx={{ ml: "8px" }}
+                                        >
+                                            <GitHubIcon />
+                                        </IconButton>
+
+
+                                        <IconButton
+                                            color="secondary"
+                                            aria-label="Twitter"
+                                            href={socials.twitter}
+                                            rel="external"
+                                            sx={{ ml: "8px", }}
+                                        >
+                                            <TwitterIcon sx={{ background: "primary" }} />
+                                        </IconButton>
 
                                     </Box>
                                     <Button
@@ -92,7 +132,7 @@ export default function Home() {
                                         variant="contained"
                                         size='large'
                                         sx={{ borderRadius: 50, px: 6, }}
-                                    >Learn more
+                                        onClick={navigateTo("about")}>Learn more
                                     </Button>
                                 </Box>
 
