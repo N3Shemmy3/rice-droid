@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button"
 import Container from "@mui/material/Container";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,15 +13,10 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import theme from '../themes/theme'
 
-import banner from '/src/assets/images/banner.jpg';
-import Avatar from "@mui/material/Avatar";
-
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Twitter from '/src/assets/images/twitter.svg';
-import Git from '/src/assets/images/git.svg';
-import Chat from '/src/assets/images/vector.svg';
-import Updates from '/src/assets/images/updates.svg';
-
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 const maintainers =
 {
@@ -71,64 +67,114 @@ export default function About() {
                     sx={{
                         mt: "16px",
                     }}
-                    spacing={{ xs: 2, md: 2 }}
-                    columns={{ xs: 1, sm: 4, md: 8 }}
+                    spacing={{ xs: 2, md: 3 }}
+                    columns={{ xs: 1, sm: 6, md: 10 }}
                 >
                     {[...Array(10)].map((e, index) => (
                         <Grid key={index} xs={2}>
-                            <Card
 
+                            <Card
                                 sx={{
                                     mb: "16px",
                                     width: "100%",
-                                    maxWidth: isTablet() ? 600 : "550px",
+                                    height: "380px",
+                                    mx: "auto",
+                                    maxWidth: isTablet() ? 380 : window.innerWidth - 100,
                                     selectable: "none",
-                                    borderRadius: "10px",
+                                    borderRadius: "12px",
+                                    position: "relative",
+                                    zIndex: 0,
                                 }}
                             >
 
                                 <CardMedia
-                                    sx={{ height: "140px", }}
+                                    sx={{ height: "250px", }}
                                     image='https://avatars.githubusercontent.com/u/67279072?v=4'
                                     title="mock"
 
                                 />
-                                <CardContent
+                                <Box
                                     sx={{
-                                        px: "auto"
+                                        height: "380px",
+                                        width: "100%",
+                                        position: "absolute",
+                                        top: "0px",
+                                        zIndex: 3,
+                                        backgroundColor: "#00000011",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "bottom",
                                     }}>
 
-                                    <Typography
-                                        variant="h5"
-                                        gutterBottom
-                                        component="div"
+                                    <Box
                                         sx={{
-                                            fontWeight: 700,
+                                            mt: "auto",
+                                            backdropFilter: "blur(5px)",
+                                            borderRadius: "12px",
                                         }}>
-                                        {maintainers.name}
-                                    </Typography>
-                                    <Typography
-                                        variant="h6"
-                                        color="text.secondary">
-                                        {maintainers.role}
-                                    </Typography>
 
-                                </CardContent>
-                                <CardActions sx={{
-                                    '& > :not(style)': {
-                                        mx: "auto",
-                                    },
-                                }}>
-                                    <IconButton color="primary" >
-                                        <img src={Git} alt="github" />
-                                    </IconButton>
-                                    <IconButton color="primary" >
-                                        <img src={Twitter} alt="github" />
-                                    </IconButton>
-                                    <IconButton color="primary" >
-                                        <img src={Updates} alt="github" />
-                                    </IconButton>
-                                </CardActions>
+                                        <CardContent>
+
+                                            <Typography
+                                                variant="h5"
+                                                component="div"
+                                                sx={{
+                                                    fontWeight: 700,
+                                                }}>
+                                                {maintainers.name}
+                                            </Typography>
+                                            <Typography
+                                                variant="h6"
+                                                color="text.secondary">
+                                                {maintainers.role}
+                                            </Typography>
+
+                                        </CardContent>
+                                        <CardActions
+                                            sx={{
+                                                pt: 0,
+                                            }}>
+
+                                            <Box sx={{
+                                                ml: "8px",
+                                                flexGrow: 1,
+                                            }}
+                                            >
+                                                <Typography
+                                                    variant="h6"
+                                                    color="text.secondary">
+
+                                                </Typography>
+                                            </Box>
+
+                                            <IconButton
+                                                color="secondary"
+                                                aria-label="Github"
+                                                sx={{ ml: "8px" }}
+                                            >
+                                                <GitHubIcon />
+                                            </IconButton>
+
+                                            <IconButton
+                                                color="secondary"
+                                                aria-label="Telegram"
+                                                sx={{ ml: "8px" }}
+                                            >
+                                                <TelegramIcon />
+                                            </IconButton>
+
+                                            <IconButton
+                                                color="secondary"
+                                                aria-label="Linked-In"
+                                                sx={{ ml: "8px" }}
+                                            >
+                                                <LinkedInIcon />
+                                            </IconButton>
+
+
+                                        </CardActions>
+                                    </Box>
+                                </Box>
 
                             </Card>
                         </Grid>
